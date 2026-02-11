@@ -1,5 +1,5 @@
 {% set name = "boxsdk" %}
-{% set version = "10.3.0" %}
+{% set version = "10.4.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/boxsdk-{{ version }}.tar.gz
-  sha256: 5b8ec0e2ed70160e16fe2fc1240d3896c88d50bd30796b021e95cfbe977b3444
+  sha256: 4a2bd4daac71a64003f1dbee4550c5bc816f34cb81213e89a93dc717b7b51ca4
 
 build:
   noarch: python
