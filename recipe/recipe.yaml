@@ -1,0 +1,51 @@
+schema_version: 1
+
+context:
+  name: boxsdk
+  version: "10.14.0"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/boxsdk-${{ version }}.tar.gz
+  sha256: 08819c9d223caaf91d98ffb673841618f77ef2803ed35abba2bf54deef5b9689
+
+build:
+  number: 0
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pip
+    - setuptools
+  run:
+    - python >=${{ python_min }}
+    - attrs >=17.3.0
+    - urllib3
+    - requests >=2.4.3,<3
+    - requests-toolbelt >=0.4.0
+    - python-dateutil
+
+tests:
+  - python:
+      imports:
+        - box_sdk_gen
+      pip_check: true
+      python_version:
+        - ${{ python_min }}
+        - "*"
+
+about:
+  summary: Official Box Python SDK
+  license: Apache-2.0
+  license_file: LICENSE
+  homepage: https://github.com/box/box-python-sdk
+  documentation: https://pythonhosted.org/boxsdk/
+
+extra:
+  recipe-maintainers:
+    - akrherz
